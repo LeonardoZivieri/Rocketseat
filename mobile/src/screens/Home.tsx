@@ -2,12 +2,15 @@ import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from "react-nat
 import Header from "../components/Header";
 import HabitDay, { DAY_SIZE } from "../components/HabitDay";
 import { generateDatesFromLastQuarter } from "../utils/generate-dates-from-last-quarter";
+import { useNavigation } from "@react-navigation/native";
 
 const weekDays = 'DSTQQSS'.split("");
 
 const sumaryDates = generateDatesFromLastQuarter();
 
 function Home() {
+    const { navigate } = useNavigation();
+
     return (
         <View className="flex-1 bg-background px-8 pt-16 items-center text-white">
             <Header />
@@ -25,7 +28,10 @@ function Home() {
             <ScrollView>
                 <View className="flex-row flex-wrap">
                     {sumaryDates.map(date => (
-                        <HabitDay key={date.toJSON()} />
+                        <HabitDay
+                            key={date.toJSON()}
+                            onPress={() => navigate("habit", { date: date.toJSON() })}
+                        />
                     ))}
                 </View>
             </ScrollView>

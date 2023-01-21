@@ -1,8 +1,8 @@
 
 import dayjs from "dayjs";
-import "dayjs/locale/pt-br";
 
+import "dayjs/locale/pt-br";
 dayjs.locale("pt-br")
 
-export default dayjs;
-
+import dayjsPluginUtc from "dayjs/plugin/utc";
+dayjs.extend(dayjsPluginUtc);
