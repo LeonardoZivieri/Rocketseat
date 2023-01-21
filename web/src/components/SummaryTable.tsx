@@ -22,7 +22,11 @@ function SummaryTable() {
 
             <div className="grid grid-rows-7 grid-flow-col gap-3">
                 {sumaryDates.map((date) => (
-                    <HabitDay key={date.toJSON()} />
+                    <HabitDay
+                        key={date.toJSON()}
+                        amount={5}
+                        completed={Math.floor(Math.random() * 5)}
+                    />
                 ))}
             </div>
         </div>
