@@ -1,11 +1,26 @@
+import { useEffect, useState } from "react";
 import { generateDatesFromLastQuarter } from "../utils/generate-dates-from-last-quarter";
 import HabitDay from "./HabitDay";
+import { api } from "../lib/axios";
 
 const weekDays = 'DSTQQSS'.split("");
 
 const sumaryDates = generateDatesFromLastQuarter();
 
+type SummaryItem = {
+    id: string,
+    date: string,
+    amount: number,
+    completed: number
+}
+
 function SummaryTable() {
+
+    const [summary, setSummary] = useState<SummaryItem[]>([]);
+
+    useEffect(() => {
+        api.get("/summary").then((response) => setSummary(response.data))
+    }, []);
 
     return (
         <div className='w-full flex'>
@@ -21,13 +36,17 @@ function SummaryTable() {
             </div>
 
             <div className="grid grid-rows-7 grid-flow-col gap-3">
-                {sumaryDates.map((date) => (
-                    <HabitDay
-                        key={date.toJSON()}
-                        amount={5}
-                        completed={Math.floor(Math.random() * 5)}
-                    />
-                ))}
+                {sumaryDates.map((date) => {
+                    const dayInSummary = summary.find(day => day.date === date.toJSON())
+                    return (
+                        <HabitDay
+                            key={date.toJSON()}
+                            date={date}
+                            amount={dayInSummary?.amount || 0}
+                            completed={dayInSummary?.completed || 0}
+                        />
+                    )
+                })}
             </div>
         </div>
     )
