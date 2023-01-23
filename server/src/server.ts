@@ -10,8 +10,9 @@ app.register(appRoutes);
 
 app.listen({
     port: 3333,
-}).then(() => {
-    console.log("Running")
+    host: "0.0.0.0",
+}).then((address) => {
+    console.log(`Running in ${address}`)
 })
 
 
