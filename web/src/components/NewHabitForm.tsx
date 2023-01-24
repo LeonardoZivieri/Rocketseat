@@ -55,7 +55,7 @@ function NewHabitForm() {
                     id="newHabitFormTitle"
                     placeholder="For example: Study, eat fruits, etc..."
                     autoFocus
-                    className="p-4 mt-3 text-white placeholder:text-zinc-400 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800"
+                    className="p-4 mt-3 text-white placeholder:text-zinc-400 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800  focus:outline-none focus:ring-2 focus:ring-violet-700 focus:ring-offset-2 focus:ring-offset-zinc-900"
                     value={title}
                     onChange={(event) => setTitle(event.target.value)}
                 />
@@ -71,11 +71,11 @@ function NewHabitForm() {
                 {availableWeekDays.map((weekDay, index) => (
                     <Checkbox.Root
                         key={weekDay}
-                        className='flex items-center group'
+                        className='flex items-center group focus:outline-none'
                         checked={weekDays[index]}
                         onCheckedChange={() => handleToggleWeekDay(index)}
                     >
-                        <div className='h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800 group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-500'>
+                        <div className='h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800 group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-500 transition-colors  group-focus:outline-none group-focus:ring-2 group-focus:ring-violet-700 group-focus:ring-offset-2 group-focus:ring-offset-background'>
                             <Checkbox.Indicator>
                                 <Check size={20} color='white' />
                             </Checkbox.Indicator>
@@ -89,8 +89,8 @@ function NewHabitForm() {
             </div>
 
             <button
-                type="submit"
-                className="mt-6 rounded-lg p-4 flex items-center justify-center gap-3 font-semibold bg-green-600 hover:bg-green-500"
+                type="submit"   
+                className="mt-6 rounded-lg p-4 flex items-center justify-center gap-3 font-semibold bg-green-600 hover:bg-green-500 transition-colors focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2 focus:ring-offset-background"
             >
                 <Check size={20} weight="bold" />
                 Confirmar

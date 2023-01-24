@@ -13,7 +13,7 @@ function ProgressBar(props: ProgressBarProps) {
                 aria-valuemin={0}
                 aria-valuemax={100}
                 aria-valuenow={75}
-                className="h-3 rounded-xl bg-violet-600"
+                className="h-3 rounded-xl bg-violet-600 transition-all"
                 style={{
                     width: `${props.progress}%`
                 }}
